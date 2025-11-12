@@ -22,8 +22,8 @@ jobs:
 
       - name: Commit bundles
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          git config rahmiisahdalii "github-actions"
+          git config rahmi475@gmail.com "actions@github.com"
           git add .
           git commit -m "update tenant bundles"
           git push
