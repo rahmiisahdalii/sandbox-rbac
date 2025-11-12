@@ -1,0 +1,29 @@
+name: Build OPA Bundles
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install OPA
+        run: |
+          curl -L -o opa https://openpolicyagent.org/downloads/latest/opa_linux_amd64
+          chmod +x opa
+
+      - name: Build bundles per tenant
+        run: |
+          for tenant in $(ls -d tenant_*); do
+            ./opa build -b $tenant/policies/ -o $tenant/bundle.tar.gz
+          done
+
+      - name: Commit bundles
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "update tenant bundles"
+          git push

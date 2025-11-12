@@ -1,0 +1,11 @@
+{
+  "tenant_id": "tenant_1",
+  "roles": {
+    "admin": {"permissions": ["read", "write", "delete"]},
+    "manager": {"permissions": ["read", "write"]},
+    "user": {"permissions": ["read"]}
+  },
+  "feature_flags": {
+    "enable_payment_gateway": true
+  }
+}

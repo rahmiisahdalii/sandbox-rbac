@@ -1,4 +1,4 @@
-package sanayiapp.sandbox
+package sandbox.authz
 
 default allow = false
 
